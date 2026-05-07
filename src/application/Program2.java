@@ -23,9 +23,18 @@ public class Program2 {
 		Department dep = departmentDao.finById(4);
 		System.out.println(dep);
 
+		/*
 		System.out.println();
 		System.out.println("===TEST 3: Testing Department deleteById===");
 		departmentDao.deleteById(6);
 		System.out.println("Deleted with successful.");
+		*/
+		
+		System.out.println();
+		System.out.println("===TEST 4: Testing Department update===");
+		Department department = departmentDao.finById(1);
+		department.setName("Tecnology");
+		departmentDao.update(department);
+		System.out.println("Update successful");
 	}
 }
