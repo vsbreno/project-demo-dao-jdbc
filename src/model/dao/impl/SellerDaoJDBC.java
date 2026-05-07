@@ -1,12 +1,10 @@
 package model.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -74,8 +72,30 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void update(Seller obj) {
-		// TODO Auto-generated method stub
-
+		
+		PreparedStatement st = null;
+		
+		try {
+		st = conn.prepareStatement(
+				"UPDATE seller "
+				+ "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
+				+ "WHERE Id = ?");
+		
+		st.setString(1, obj.getName());
+		st.setString(2, obj.getEmail());
+		st.setDate(3, java.sql.Date.valueOf(obj.getBirthDate().toLocalDate()));
+		st.setDouble(4, obj.getBaseSalary());
+		st.setInt(5, obj.getDepartment().getId());
+		st.setInt(6, obj.getId());
+		
+		st.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
