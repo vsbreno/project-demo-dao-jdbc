@@ -18,6 +18,10 @@ public class Program2 {
 			System.out.println(obj);
 		}
 		
+		System.out.println();
+		System.out.println("===TEST 2: Testing Department findById===");
+		Department dep = departmentDao.finById(4);
+		System.out.println(dep);
 	}
 
 }
