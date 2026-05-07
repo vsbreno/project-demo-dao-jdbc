@@ -41,10 +41,16 @@ public class Program {
 		
 		System.out.println();
 		System.out.println("===TEST 5: Testing Seller update===");
-		seller = sellerDao.finById(1);
+		seller = sellerDao.finById(3);
 		seller.setName("Martha Wayne");
 		sellerDao.update(seller);
 		System.out.println("Update completed.");
 		System.out.println("Updated seller: " + seller.getName());
+		
+		System.out.println();
+		System.out.println("===TEST 6: Testing Seller delete===");
+		Seller s1 = sellerDao.finById(10);
+		sellerDao.deleteById(s1.getId());
+		System.out.println("Deleted with successful.");
 	}
 }
