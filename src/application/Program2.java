@@ -23,12 +23,10 @@ public class Program2 {
 		Department dep = departmentDao.finById(4);
 		System.out.println(dep);
 
-		/*
 		System.out.println();
 		System.out.println("===TEST 3: Testing Department deleteById===");
-		departmentDao.deleteById(6);
+		departmentDao.deleteById(7);
 		System.out.println("Deleted with successful.");
-		*/
 		
 		System.out.println();
 		System.out.println("===TEST 4: Testing Department update===");
@@ -36,5 +34,10 @@ public class Program2 {
 		department.setName("Tecnology");
 		departmentDao.update(department);
 		System.out.println("Update successful");
+		
+		System.out.println();
+		System.out.println("===TEST 5: Testing Department insert===");
+		departmentDao.insert(new Department(null, "Branco"));
+		System.out.println("insertion with successful.");
 	}
 }
